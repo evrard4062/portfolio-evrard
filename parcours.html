@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parcours | Evrard AYIDEDJI</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,500;14..32,600;14..32,700;14..32,800&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<canvas id="particle-canvas"></canvas>
+
+<header class="glass-header">
+    <div class="logo">Evrard<span>.dev</span></div>
+    <div class="mobile-toggle" id="mobileToggle"><i class="fas fa-bars"></i></div>
+    <ul class="nav-links" id="navLinks">
+        <li><a href="index.html" class="nav-link">Accueil</a></li>
+        <li><a href="competences.html" class="nav-link">Compétences</a></li>
+        <li><a href="projets.html" class="nav-link">Projets</a></li>
+        <li><a href="parcours.html" class="nav-link active">Parcours</a></li>
+        <li><a href="contact.html" class="nav-link">Contact</a></li>
+    </ul>
+</header>
+
+<main>
+    <section id="education">
+        <h2 class="section-title">Parcours <span>académique</span></h2>
+        <div class="timeline" id="timelineRoot"></div>
+    </section>
+</main>
+
+<footer class="footer">
+    <div class="social-links">
+        <a href="#"><i class="fab fa-github"></i></a>
+        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+    </div>
+    <p style="margin-top: 1rem;">© 2026 AYIDEDJI M. Evrard — Détermination & Excellence</p>
+</footer>
+
+<script>
+    const timelineData = [
+        { title: "Certificat d'Études Primaires (CEP)", school: "CSP Les Élites de Sainte Dolé", year: "2016-2017", icon: "fas fa-pencil-alt", badge: "Primaire" },
+        { title: "Brevet d'Études du Premier Cycle (BEPC)", school: "CSP Les Élites de Sainte Dolé", year: "2020-2021", icon: "fas fa-book", badge: "Collège" },
+        { title: "Baccalauréat Série C", school: "CEG Sèkandji", year: "2023-2024", icon: "fas fa-graduation-cap", badge: "Lycée" },
+        { title: "Licence Mathématiques & Applications (MIA)", school: "Université / en cours", year: "2024 - aujourd'hui", icon: "fas fa-brain", badge: "Enseignement supérieur" }
+    ];
+    const timelineRoot = document.getElementById('timelineRoot');
+    timelineData.forEach(item => {
+        const div = document.createElement('div');
+        div.className = 'timeline-item fade-up';
+        div.innerHTML = `
+            <div class="timeline-icon"><i class="${item.icon}"></i></div>
+            <div class="timeline-content">
+                <span style="color:var(--cyan-primary); font-weight:bold;">${item.badge}</span>
+                <h3>${item.title}</h3>
+                <p><i class="fas fa-school"></i> ${item.school}</p>
+                <p><i class="fas fa-calendar-alt"></i> ${item.year}</p>
+            </div>
+        `;
+        timelineRoot.appendChild(div);
+    });
+</script>
+<script src="main.js"></script>
+</body>
+</html>

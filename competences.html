@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compétences | Evrard AYIDEDJI</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,500;14..32,600;14..32,700;14..32,800&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<canvas id="particle-canvas"></canvas>
+
+<header class="glass-header">
+    <div class="logo">Evrard<span>.dev</span></div>
+    <div class="mobile-toggle" id="mobileToggle"><i class="fas fa-bars"></i></div>
+    <ul class="nav-links" id="navLinks">
+        <li><a href="index.html" class="nav-link">Accueil</a></li>
+        <li><a href="competences.html" class="nav-link active">Compétences</a></li>
+        <li><a href="projets.html" class="nav-link">Projets</a></li>
+        <li><a href="parcours.html" class="nav-link">Parcours</a></li>
+        <li><a href="contact.html" class="nav-link">Contact</a></li>
+    </ul>
+</header>
+
+<main>
+    <section id="competences">
+        <h2 class="section-title">Expertises & <span>savoirs</span></h2>
+        <div class="skills-grid" id="skillsContainer"></div>
+    </section>
+</main>
+
+<footer class="footer">
+    <div class="social-links">
+        <a href="#"><i class="fab fa-github"></i></a>
+        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+    </div>
+    <p style="margin-top: 1rem;">© 2026 AYIDEDJI M. Evrard — Détermination & Excellence</p>
+</footer>
+
+<script>
+    const skillsData = [
+        { category: "Développement Web", icon: "fa-globe", skills: [{ name: "HTML5/CSS3", pct: 85 }, { name: "JavaScript/React", pct: 60 }, { name: "Node.js/Express", pct: 45 }] },
+        { category: "Programmation", icon: "fa-code", skills: [{ name: "Langage C", pct: 65 }, { name: "Python", pct: 55 }, { name: "Algorithmie", pct: 75 }] },
+        { category: "Outils & Productivité", icon: "fa-laptop", skills: [{ name: "Word/Excel", pct: 88 }, { name: "Git/GitHub", pct: 70 }, { name: "Linux/Shell", pct: 62 }] },
+        { category: "Sciences & Pédagogie", icon: "fa-chalkboard", skills: [{ name: "Mathématiques", pct: 90 }, { name: "Physique", pct: 82 }, { name: "Cours à domicile", pct: 88 }] }
+    ];
+
+    const skillsContainer = document.getElementById('skillsContainer');
+    function buildSkills() {
+        skillsContainer.innerHTML = '';
+        skillsData.forEach(cat => {
+            const card = document.createElement('div');
+            card.className = 'skill-card fade-up';
+            card.innerHTML = `<div class="skill-header"><i class="fas ${cat.icon}"></i><h3>${cat.category}</h3></div>`;
+            cat.skills.forEach(sk => {
+                const skillDiv = document.createElement('div');
+                skillDiv.className = 'skill-bar';
+                skillDiv.innerHTML = `
+                    <div class="bar-info"><span>${sk.name}</span><span>${sk.pct}%</span></div>
+                    <div class="bar-track"><div class="bar-fill" data-pct="${sk.pct}"></div></div>
+                `;
+                card.appendChild(skillDiv);
+            });
+            skillsContainer.appendChild(card);
+        });
+    }
+    buildSkills();
+</script>
+<script src="main.js"></script>
+</body>
+</html>
